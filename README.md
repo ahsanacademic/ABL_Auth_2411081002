@@ -29,4 +29,4 @@ This class-project slice does not yet include distributed rate limiting for logi
 
 `POST /api/auth/register` accepts `username`, `password`, `email`, `nama`, `alamat`, and optional `jenisKelamin` (`LAKI_LAKI` or `PEREMPUAN`). Public registration always creates a `pelanggan` role; clients cannot set their own role.
 
-`POST /api/auth/login` accepts `username` and `password`. Both endpoints return a Bearer JWT response. Registration publishes a durable `user_registered_queue` message; the profile consumer is added in the next implementation stage.
+`POST /api/auth/login` accepts `username` and `password`. Both endpoints return a Bearer JWT response. Registration publishes a durable `user_registered_queue` message; the Pelanggan service consumes it and creates a profile linked by `authUserId`.
